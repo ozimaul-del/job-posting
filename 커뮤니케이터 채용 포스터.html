@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>커뮤니케이터 채용 포스터</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f5f0eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .poster {
+    width: 750px;
+    min-height: 900px;
+    background: linear-gradient(175deg, #fefcf9 0%, #f7f2ec 40%, #eee7dc 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(80, 60, 30, 0.12);
+    position: relative;
+  }
+
+  /* 상단 장식 바 */
+  .top-bar {
+    height: 6px;
+    background: linear-gradient(90deg, #5a7247, #8fa474, #c9b98a, #8fa474, #5a7247);
+  }
+
+  .content {
+    padding: 44px 44px 36px;
+  }
+
+  /* 태그라인 */
+  .tagline {
+    font-size: 13px;
+    font-weight: 500;
+    color: #8fa474;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  /* 메인 타이틀 */
+  .main-title {
+    font-size: 30px;
+    font-weight: 900;
+    color: #2c3524;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+
+  .main-title .highlight {
+    color: #5a7247;
+  }
+
+  .sub-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #5a7247;
+    margin-bottom: 28px;
+  }
+
+  /* 소개 문구 */
+  .intro {
+    font-size: 14px;
+    font-weight: 400;
+    color: #5c5244;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ddd5c9;
+  }
+
+  /* 정보 그리드 */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    margin-bottom: 28px;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8fa474;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .info-value {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #2c3524;
+    line-height: 1.45;
+  }
+
+  /* 구분선 */
+  .divider {
+    height: 1px;
+    background: #ddd5c9;
+    margin-bottom: 24px;
+  }
+
+  /* 섹션 */
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #5a7247;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background: #8fa474;
+    border-radius: 2px;
+  }
+
+  .task-list {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .task-list li {
+    font-size: 13.5px;
+    color: #4a4237;
+    line-height: 1.55;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .task-list li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: #8fa474;
+    font-weight: 700;
+  }
+
+  /* 태도 뱃지 */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .badge {
+    font-size: 12px;
+    font-weight: 500;
+    color: #5a7247;
+    background: rgba(143, 164, 116, 0.13);
+    border: 1px solid rgba(143, 164, 116, 0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* 복리후생 태그 */
+  .benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .benefit-tag {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #6b5f4f;
+    background: rgba(201, 185, 138, 0.18);
+    border: 1px solid rgba(201, 185, 138, 0.3);
+    padding: 5px 12px;
+    border-radius: 16px;
+  }
+
+  /* Q&A */
+  .qa-list {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .qa-item {}
+
+  .qa-q {
+    font-size: 13px;
+    font-weight: 600;
+    color: #3a4f2c;
+    margin-bottom: 4px;
+  }
+
+  .qa-a {
+    font-size: 13px;
+    font-weight: 400;
+    color: #5c5244;
+    line-height: 1.6;
+    padding-left: 14px;
+    border-left: 2px solid #c9deb8;
+    word-break: keep-all;
+  }
+
+  /* 하단 지원 정보 */
+  .apply-section {
+    background: #5a7247;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 8px;
+  }
+
+  .apply-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 14px;
+  }
+
+  .apply-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .apply-row {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.88);
+    display: flex;
+    gap: 8px;
+  }
+
+  .apply-row .label {
+    font-weight: 600;
+    color: #c9deb8;
+    min-width: 60px;
+  }
+
+  .deadline-highlight {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* 하단 로고 영역 */
+  .footer {
+    text-align: center;
+    padding: 20px 0 8px;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    color: #b0a594;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="top-bar"></div>
+  <div class="content">
+
+    <div class="tagline">COMMUNICATOR RECRUITMENT</div>
+
+    <div class="main-title">
+      좋은 농산물이<br>
+      좋은 사람들에게 <span class="highlight">닿도록.</span>
+    </div>
+    <div class="sub-title">커뮤니케이터를 모집합니다</div>
+
+    <div class="intro">
+      생산자·소비자·외주 인력 사이의 소통을 정리하고,<br>
+      콘텐츠를 통해 우리 먹거리 홍보를 담당할<br>
+      <strong>신입 커뮤니케이터</strong>를 찾습니다.
+    </div>
+
+    <!-- 근무 정보 -->
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">근무지</span>
+        <span class="info-value">대전광역시 서구<br><span style="font-size:12px;color:#8a7e6e;">(사무실 이전 예정)</span></span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">근무형태</span>
+        <span class="info-value">정규직 · 주 5일<br>09:00 ~ 18:00</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">급여</span>
+        <span class="info-value">연봉 2,700만 원 ~<br><span style="font-size:12px;color:#8a7e6e;">상여금 별도</span></span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">수습기간</span>
+        <span class="info-value">3개월<br><span style="font-size:12px;color:#8a7e6e;">급여 차이 없음</span></span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 주요 업무 -->
+    <div class="section-title">주요 업무</div>
+    <ul class="task-list">
+      <li>콘텐츠 제작 보조</li>
+      <li>발송 일정·공지 내용을 소비자에게 전달, 추가 문의 기록</li>
+      <li>외주 인력 진행 상황 확인·기록 후 팀장에게 보고</li>
+      <li>문의·클레임·배송 이슈 데이터 정리 및 팀 내 공유</li>
+    </ul>
+
+    <!-- 우리가 중요하게 보는 태도 -->
+    <div class="section-title">이런 분이면 좋겠습니다</div>
+    <ul class="task-list">
+      <li>영상 촬영·편집에 관심이 있는 분</li>
+      <li>생산자·소비자·외주 인력을 모두 동료로 보고, 어느 한쪽에 치우치지 않고 공정하게 전달하려는 분</li>
+      <li>문제 상황에서 "누가 잘못했는지"보다 "어떻게 하면 좋을지"를 먼저 생각하는 분</li>
+      <li>AI를 모든 것을 대신하는 도구가 아니라, 내 일을 더 잘하기 위한 보조 수단으로 이해하는 분</li>
+      <li>농산물과 농부님의 노고를 가볍게 여기지 않고, 기본적인 존중을 바탕으로 소통하는 분</li>
+      <li>비난·욕설보다 차분하게 상황을 풀어가려는 분</li>
+    </ul>
+
+    <!-- 복리후생 -->
+    <div class="section-title">복리후생</div>
+    <ul class="task-list">
+      <li>4대보험 완납 (국민연금, 건강보험, 고용보험, 산재보험)</li>
+      <li>생일·결혼기념일 연차 차감 없이 휴무</li>
+      <li>출산휴가·육아휴직 지원</li>
+      <li>면접비 지급</li>
+      <li>초과근무 시 대체휴무, 대중교통 종료 시 택시비 지원</li>
+      <li>통신비·교육비·자격증 취득비·도서구입비 지원</li>
+      <li>입사 첫 주 집중 OJT 및 AI 활용 교육 지원</li>
+    </ul>
+
+    <!-- Q&A -->
+    <div class="section-title">자주 묻는 질문</div>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="qa-q">Q. 경험이 없어도 지원할 수 있나요?</div>
+        <div class="qa-a">네, 신입 채용이라 관련 경험이 없어도 됩니다. OJT와 팀장 밀착 가이드로 업무를 배울 수 있으며, 배우려는 의지와 성실한 태도가 가장 중요합니다.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 사업자 소재지가 경북인데 왜 대전에서 채용하나요?</div>
+        <div class="qa-a">경북에서는 농산물 생산을, 대전에서는 R&amp;D·CS·유통을 담당합니다. 역할에 따라 거점을 나눠 운영하고 있습니다.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. AI 툴 활용 우대는 어떤 의미인가요?</div>
+        <div class="qa-a">Claude, GPT 등을 활용해 문서 정리·공지 작성 등 업무 효율을 높일 수 있는 분을 우대합니다. 회사 유료 GPT 계정을 함께 사용할 수 있습니다.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 촬영에도 참가하나요?</div>
+        <div class="qa-a">촬영 보조는 가능하지만 메인 업무는 아닙니다. 관심 있다면 적극 권장합니다.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 함께하고 싶지 않은 인재상도 있나요?</div>
+        <div class="qa-a">AI가 모든 걸 대신할 수 있다고 믿는 사람, 비난 위주의 커뮤니케이션을 하는 사람, 농산물의 소중함을 가볍게 여기는 사람, 욕설 사용을 즐기는 사람과는 지향점이 다를 수 있습니다.</div>
+      </div>
+    </div>
+
+    <!-- 지원 안내 -->
+    <div class="apply-section">
+      <div class="apply-title">지원 안내</div>
+      <div class="apply-info">
+        <div class="apply-row">
+          <span class="label">제출</span>
+          <span>이력서 + 자기소개서 (자유 형식, A4 1장 내외)</span>
+        </div>
+        <div class="apply-row">
+          <span class="label">필수기재</span>
+          <span>협업 경험, AI 활용 경험</span>
+        </div>
+        <div class="apply-row">
+          <span class="label">이메일</span>
+          <span>kim@at-the.farm</span>
+        </div>
+        <div class="apply-row">
+          <span class="label">전화</span>
+          <span>1661-5880</span>
+        </div>
+      </div>
+      <div class="deadline-highlight">
+        마감  |  2026. 4. 17 (목) 자정까지
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-text">농업회사법인 주식회사 밭에서 · 채용 담당 김현곤 팀장</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
